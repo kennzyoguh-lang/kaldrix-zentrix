@@ -110,7 +110,7 @@
   <span class="tag">Test service · pretend bank · no real money</span>
   <h1>The trust layer for AI agents that move money.</h1>
   <p class="lead"><strong>Kaldrix</strong> gives an agent a signed limit. <strong>Zentrix</strong> is the conditional escrow and execution clearinghouse: money moves only when the agent proves it did exactly what it was told.</p>
-  <div class="cta"><a class="btn" href="https://kaldrix-sandbox.fly.dev" target="_blank" rel="noopener">Try the live demo (30 seconds)</a><a class="btn ghost" href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">See the code</a></div>
+  <div class="cta"><a class="btn" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Try the live demo (30 seconds)</a><a class="btn ghost" href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">See the code</a></div>
   <p class="fine">The demo sleeps when nobody is using it, so the first open can take up to 30 seconds. After that it is quick.</p>
 </div></div>
 
@@ -252,7 +252,7 @@
     <div class="card"><div class="num">2</div><h3>Press "Run the demo for me"</h3><p>The page plays the agent and the bank. It stops once, to ask you to approve a big payment.</p></div>
     <div class="card"><div class="num">3</div><h3>Open the proof envelope</h3><p>After the first payment, expand the signed envelope to see what a bank would check.</p></div>
   </div>
-  <p style="margin-top:22px"><a class="btn" style="border-color:var(--violet);background:var(--violet);color:#fff !important" href="https://kaldrix-sandbox.fly.dev" target="_blank" rel="noopener">Open the live demo</a></p>
+  <p style="margin-top:22px"><a class="btn" style="border-color:var(--violet);background:var(--violet);color:#fff !important" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Open the live demo</a></p>
   <h3 style="margin-top:34px">Connect your own AI assistant</h3>
   <p class="sub" style="margin-bottom:6px">After you make a key for your assistant in the demo, one line installs the connector. This one is for Claude Code; the code page covers the others.</p>
   <pre class="code">claude mcp add kaldrix -e KALDRIX_AGENT_KEY=kz_YOUR_AGENT_KEY -- uvx --from git+https://github.com/kennzyoguh-lang/kaldrix-connect kaldrix-connect</pre>
