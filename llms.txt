@@ -1,0 +1,13 @@
+# Kaldrix and Zentrix
+
+> The trust layer for AI agents that move money. Kaldrix gives an AI agent a signed spending limit; Zentrix, the conditional escrow and execution clearinghouse, moves money only when the agent proves it stayed inside its exact instructions, and returns a signed proof-of-intent envelope with every payment.
+
+Status: a working test service with a pretend bank (no real money). Not independently security-reviewed yet. No partnerships are claimed.
+
+## Links
+- [Product site](https://kennzyoguh-lang.github.io/kaldrix-zentrix/)
+- [Live demo, pretend bank](https://kaldrix-sandbox.onrender.com)
+- [Public connector for AI assistants (MCP)](https://github.com/kennzyoguh-lang/kaldrix-connect)
+- [Founder: Oguh Chidiebube Kenneth](https://kennzyoguh-lang.github.io/)
+- [Kaldrix on LinkedIn](https://www.linkedin.com/company/kaldrix/)
+- [Zentrix on LinkedIn](https://www.linkedin.com/company/zentrix-gateway/)

@@ -19,7 +19,10 @@
 <link rel="canonical" href="https://kennzyoguh-lang.github.io/kaldrix-zentrix/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Kaldrix","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/","description":"Agentic authorization, security and payments.","founder":{"@type":"Person","name":"Oguh Chidiebube Kenneth"},"sameAs":["https://github.com/kennzyoguh-lang/kaldrix-connect"]},{"@type":"SoftwareApplication","name":"Zentrix","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Conditional escrow and execution clearinghouse for autonomous software agents.","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/"},{"@type":"SoftwareApplication","name":"Kaldrix","applicationCategory":"SecurityApplication","operatingSystem":"Web","description":"Signed, limited permissions for AI agents.","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Kaldrix","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/","description":"Agentic authorization, security and payments.","founder":{"@type":"Person","name":"Oguh Chidiebube Kenneth"},"sameAs":["https://github.com/kennzyoguh-lang/kaldrix-connect","https://www.linkedin.com/company/kaldrix/","https://www.linkedin.com/company/zentrix-gateway/"]},{"@type":"SoftwareApplication","name":"Zentrix","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Conditional escrow and execution clearinghouse for autonomous software agents.","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/"},{"@type":"SoftwareApplication","name":"Kaldrix","applicationCategory":"SecurityApplication","operatingSystem":"Web","description":"Signed, limited permissions for AI agents.","url":"https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are agentic payments?", "acceptedAnswer": {"@type": "Answer", "text": "Payments started by AI agents, software that acts for a person or a company, instead of by a person clicking pay. Kaldrix and Zentrix make sure such a payment stays inside limits a person signed."}}, {"@type": "Question", "name": "How do you stop an AI agent from overspending?", "acceptedAnswer": {"@type": "Answer", "text": "Do not rely on a rule in the agent's prompt, because a message can argue the agent out of it. Put the limit in a signed permission outside the agent, and check every payment against it at the moment of paying, with a person approving large ones."}}, {"@type": "Question", "name": "What is a proof-of-intent envelope?", "acceptedAnswer": {"@type": "Answer", "text": "A signed record returned with every payment. It names who held the permission, the exact amount, supplier and purpose, and the time limits, so a bank or auditor can verify who authorised it."}}, {"@type": "Question", "name": "Is Kaldrix and Zentrix live with real money?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a working test service with a pretend bank. Real money needs a licensed partner, and an independent security review is planned before then."}}, {"@type": "Question", "name": "Does it work with Claude, Cursor, Copilot and Codex?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A public connector lets AI assistants that speak MCP pay inside a permission, using a limited key that cannot approve its own payments or change its limits."}}]}
 </script>
 <style>
   :root {
@@ -194,11 +197,11 @@
   <div class="tablewrap"><table>
     <thead><tr><th>The agent tries to…</th><th>Result</th></tr></thead>
     <tbody>
-      <tr><td>Pay ₦1,001 when one payment may be at most ₦1,000</td><td><span class="pill ok">Refused</span></td></tr>
+      <tr><td>Pay $1,001 when one payment may be at most $1,000</td><td><span class="pill ok">Refused</span></td></tr>
       <tr><td>Pay a supplier the permission does not name</td><td><span class="pill ok">Refused</span></td></tr>
       <tr><td>Pay for payroll when it was only given "supplier payment"</td><td><span class="pill ok">Refused</span></td></tr>
-      <tr><td>Stretch a proof signed for ₦10 to pay ₦20</td><td><span class="pill ok">Refused</span></td></tr>
-      <tr><td>Pay ₦800 when anything above ₦500 needs a person</td><td><span class="pill wait">Waits for a person</span></td></tr>
+      <tr><td>Stretch a proof signed for $10 to pay $20</td><td><span class="pill ok">Refused</span></td></tr>
+      <tr><td>Pay $800 when anything above $500 needs a person</td><td><span class="pill wait">Waits for a person</span></td></tr>
       <tr><td>Pay again after the permission is cancelled</td><td><span class="pill ok">Refused</span></td></tr>
     </tbody></table></div>
 </div></section>
@@ -219,7 +222,7 @@
   <h2>The limit is outside the agent, and the proof is tied to the payment.</h2>
   <p class="sub">Many agent-security tools watch or filter what an agent does. Kaldrix and Zentrix take a different route.</p>
   <div class="grid g2">
-    <div class="card"><h3>The proof is tied to the payment</h3><p>Each payment needs a signature over the exact amount, supplier and currency. A proof made for ₦200 can not be stretched to pay ₦450.</p></div>
+    <div class="card"><h3>The proof is tied to the payment</h3><p>Each payment needs a signature over the exact amount, supplier and currency. A proof made for $200 can not be stretched to pay $450.</p></div>
     <div class="card"><h3>The agent can not grant itself anything</h3><p>Its key can pay and read payments, nothing else. It can not add suppliers, widen a permission or approve its own payment. The service enforces that.</p></div>
     <div class="card"><h3>People stay in the loop where it matters</h3><p>Above an amount you choose, a named person (or two) must approve that exact payment.</p></div>
     <div class="card"><h3>Built for places where banks are unreliable</h3><p>Nigeria first. Zentrix will not pay twice when a bank times out, and it only tries another provider when it is certain nothing was sent.</p></div>
@@ -263,12 +266,18 @@
   <pre class="code">claude mcp add kaldrix -e KALDRIX_AGENT_KEY=kz_YOUR_AGENT_KEY -- uvx --from git+https://github.com/kennzyoguh-lang/kaldrix-connect kaldrix-connect</pre>
 </div></section>
 
+<section class="alt" id="faq"><div class="wrap">
+  <p class="kicker">Questions</p>
+  <h2>Common questions about agentic payments.</h2>
+  <div class="grid g2"><div class="card"><h3>What are agentic payments?</h3><p>Payments started by AI agents, software that acts for a person or a company, instead of by a person clicking pay. Kaldrix and Zentrix make sure such a payment stays inside limits a person signed.</p></div><div class="card"><h3>How do you stop an AI agent from overspending?</h3><p>Do not rely on a rule in the agent's prompt, because a message can argue the agent out of it. Put the limit in a signed permission outside the agent, and check every payment against it at the moment of paying, with a person approving large ones.</p></div><div class="card"><h3>What is a proof-of-intent envelope?</h3><p>A signed record returned with every payment. It names who held the permission, the exact amount, supplier and purpose, and the time limits, so a bank or auditor can verify who authorised it.</p></div><div class="card"><h3>Is Kaldrix and Zentrix live with real money?</h3><p>No. It is a working test service with a pretend bank. Real money needs a licensed partner, and an independent security review is planned before then.</p></div><div class="card"><h3>Does it work with Claude, Cursor, Copilot and Codex?</h3><p>Yes. A public connector lets AI assistants that speak MCP pay inside a permission, using a limited key that cannot approve its own payments or change its limits.</p></div></div>
+</div></section>
+
 <section id="talk"><div class="wrap">
   <p class="kicker">Contact</p>
   <h2>Building agents that touch money?</h2>
   <p class="sub">If you build agents, run a payments, banking or AI platform, or invest in this space, I would like to hear what would make this safe enough for you.</p>
   <p class="cta"><a class="btn" style="border-color:var(--violet);background:var(--violet);color:#fff !important" href="https://github.com/kennzyoguh-lang/kaldrix-connect/issues/new?title=Let%27s%20talk" target="_blank" rel="noopener">Let's talk</a>
-  <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://kennzyoguh-lang.github.io/">About the founder</a></p>
+  <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://kennzyoguh-lang.github.io/">About the founder</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/kaldrix/" target="_blank" rel="noopener">Kaldrix on LinkedIn</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/zentrix-gateway/" target="_blank" rel="noopener">Zentrix on LinkedIn</a></p>
 </div></section>
 </main>
 <footer><div class="wrap">
