@@ -7,6 +7,7 @@ Status: a working test service with a pretend bank (no real money). Not independ
 ## Links
 - [Product site](https://kennzyoguh-lang.github.io/kaldrix-zentrix/)
 - [Live demo, pretend bank](https://kaldrix-sandbox.onrender.com)
+- [Break the Agent challenge: try to make a signed spending limit fail](https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html)
 - [Public connector for AI assistants (MCP)](https://github.com/kennzyoguh-lang/kaldrix-connect)
 - [Founder: Oguh Chidiebube Kenneth](https://kennzyoguh-lang.github.io/)
 - [Kaldrix on LinkedIn](https://www.linkedin.com/company/kaldrix/)

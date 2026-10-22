@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Break the Agent: try to make a signed spending limit fail</title>
+<meta name="description" content="Try to make an AI agent spend money it should not. Kaldrix checks every payment against a signed limit in a live test service with a pretend bank. Report what you tried. If you find a real break, we fix it and credit you.">
+<meta name="theme-color" content="#17124A">
+<meta property="og:title" content="Break the Agent: try to make a signed spending limit fail">
+<meta property="og:description" content="A live test service with a pretend bank. Try to get an AI agent to pay more, pay the wrong supplier, or pay twice. Report what happened.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html">
+<meta property="og:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/02-four-cheats.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Four ways an AI agent tried to cheat, each one refused.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/02-four-cheats.png">
+<link rel="canonical" href="https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --ink: #17124A; --violet: #5B3FD6; --gold: #E0A526; --teal: #12B5B0;
+    --bg: #FAF9F6; --card: #FFFFFF; --text: #1b1750; --muted: #55527a; --line: #e4e2ef; --soft: #F1EFFA;
+    --ok: #0b7a4b; --okbg: #e3f5ec; --hero1: #17124A; --hero2: #2a1f7a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0a2b; --card: #17124a; --text: #efeeff; --muted: #b6b3dc; --line: #2f2a78; --soft: #1d1760;
+      --ok: #6fe0ae; --okbg: #0f3a2a; --hero1: #0d0a2b; --hero2: #1b1460;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 Inter, "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; }
+  a { color: var(--violet); } @media (prefers-color-scheme: dark) { a { color: #b9a9ff; } }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+  .skip { position: absolute; left: -999px; } .skip:focus { left: 12px; top: 12px; background: #fff; color: #000; padding: 8px 12px; z-index: 9; }
+
+  header.nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--hero1) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08); }
+  header.nav .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 700; letter-spacing: .2px; }
+  .brand svg { width: 32px; height: 32px; }
+  nav.links { margin-left: auto; display: flex; gap: 20px; font-size: 15px; }
+  nav.links a { color: #d9d5ff; text-decoration: none; white-space: nowrap; } nav.links a:hover { color: #fff; }
+  .brand { white-space: nowrap; }
+  @media (max-width: 900px) { nav.links a.opt { display: none; } }
+
+  .hero { background: radial-gradient(1200px 500px at 85% -10%, rgba(91,63,214,.55), transparent 60%), linear-gradient(160deg, var(--hero1), var(--hero2)); color: #fff; padding: 72px 0 84px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--gold); color: #17124A; padding: 5px 12px; border-radius: 999px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.08; margin: 18px 0 16px; letter-spacing: -.02em; max-width: 14ch; }
+  .hero p.lead { font-size: clamp(18px, 2.4vw, 22px); color: #dcd8ff; max-width: 58ch; margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; font-weight: 700; text-decoration: none; padding: 13px 22px; border-radius: 12px; border: 2px solid var(--gold); background: var(--gold); color: #17124A !important; }
+  .btn.ghost { background: transparent; color: #fff !important; border-color: rgba(255,255,255,.45); }
+  .btn:hover { filter: brightness(1.06); }
+  .fine { font-size: 14px; color: #b9b4ee; margin-top: 16px; }
+
+  section { padding: 64px 0; }
+  section.alt { background: var(--soft); }
+  h2 { font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.01em; }
+  .kicker { font-size: 13px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--violet); margin: 0 0 8px; }
+  @media (prefers-color-scheme: dark) { .kicker { color: #b9a9ff; } }
+  .sub { color: var(--muted); max-width: 64ch; margin: 0 0 28px; }
+  .grid { display: grid; gap: 18px; } .g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 880px) { .g4 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .g2, .g4 { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .card h3 { margin: 0 0 6px; font-size: 20px; } .card p { margin: 6px 0; color: var(--muted); }
+  .num { width: 34px; height: 34px; border-radius: 10px; background: var(--violet); color: #fff; font-weight: 800; display: grid; place-items: center; margin-bottom: 10px; }
+  .prod { border-top: 5px solid var(--violet); } .prod.z { border-top-color: var(--teal); }
+  .prod .what { font-weight: 700; color: var(--text); }
+  ul.clean { padding-left: 20px; margin: 8px 0; color: var(--muted); } ul.clean li { margin: 5px 0; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; font-size: 16px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; } th { background: var(--soft); font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; }
+  .pill.ok { background: var(--okbg); color: var(--ok); } .pill.wait { background: #fdf1d6; color: #7a5200; } .pill.no { background: #eceaf6; color: #4b4780; }
+  @media (prefers-color-scheme: dark) { .pill.wait { background: #3d2f08; color: #f4cc6a; } .pill.no { background: #2a2570; color: #cfcaff; } }
+  .tablewrap { overflow-x: auto; }
+  a.post { text-decoration: none; color: inherit; display: block; } a.post:hover { border-color: var(--violet); } a.post h3 { color: var(--text); margin-top: 10px; }
+
+  .steps { counter-reset: s; }
+  pre.code { background: #0d0a2b; color: #e9e6ff; padding: 16px 18px; border-radius: 14px; overflow-x: auto; font: 14px/1.55 ui-monospace, Consolas, monospace; margin: 12px 0; }
+
+  .founder { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: center; }
+  .avatar { width: 120px; height: 120px; border-radius: 28px; background: linear-gradient(145deg, var(--ink), var(--violet)); display: grid; place-items: center; color: #fff; font-size: 44px; font-weight: 800; letter-spacing: -.02em; }
+  @media (max-width: 600px) { .founder { grid-template-columns: 1fr; } }
+
+  footer { background: var(--hero1); color: #b9b4ee; padding: 36px 0 48px; font-size: 15px; }
+  footer a { color: #d9d5ff; } footer .row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-between; }
+  .banner { background: var(--okbg); color: var(--ok); border-radius: 12px; padding: 12px 16px; font-weight: 600; margin: 0 0 24px; }
+
+  .chip { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; margin: 0 6px 6px 0; }
+  .chip.ok { background: var(--okbg); color: var(--ok); } .chip.wait { background: #fdf1d6; color: #7a5200; } .chip.plan { background: #eceaf6; color: #4b4780; }
+  @media (prefers-color-scheme: dark) { .chip.wait { background: #3d2f08; color: #f4cc6a; } .chip.plan { background: #2a2570; color: #cfcaff; } }
+  .status { margin-top: 12px; font-size: 15px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+  .pillar h3 { margin-top: 0; }
+
+.apply{max-width:640px}
+.apply label{display:block;margin:14px 0 4px;font-size:15px;font-weight:600}
+.apply input,.apply select,.apply textarea{width:100%;padding:11px 12px;border:1px solid #c9ccd6;border-radius:8px;font:inherit;background:#fff;color:#14161f}
+.apply textarea{min-height:96px;resize:vertical}
+.apply .check{display:flex;gap:10px;align-items:flex-start;margin:16px 0 4px;font-size:14px;font-weight:400}
+.apply .check input{width:auto;margin-top:3px}
+.apply .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.apply button{margin-top:16px;padding:12px 22px;border-radius:8px;border:1px solid var(--violet);background:var(--violet);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.apply button:disabled{opacity:.6;cursor:default}
+.apply .msg{margin-top:12px;font-size:15px;min-height:1.4em}
+.apply .msg.bad{color:#b00020}
+.apply .msg.good{color:#0b6b3a}
+.apply .fine{font-size:13px;color:#5b6070;margin-top:10px}
+</style>
+<style>
+.hero.small{padding:56px 0 64px}
+.hero.small h1{max-width:20ch}
+.ch-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 0}
+.ch-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px 16px}
+.ch-stat b{display:block;font-size:34px;line-height:1.1;color:#fff}
+.ch-stat span{font-size:14px;color:#cfcaff}
+ol.steps{padding-left:22px} ol.steps li{margin:8px 0}
+ul.ideas{columns:2;column-gap:28px;padding-left:20px} @media(max-width:700px){ul.ideas{columns:1}}
+ul.ideas li{margin:6px 0;break-inside:avoid}
+.wall-item{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);margin:10px 0}
+.wall-item small{color:var(--muted)}
+.radios{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px}
+.radios label{display:flex;gap:8px;align-items:center;font-weight:400;margin:0}
+.radios input{width:auto}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="nav"><div class="wrap">
+<a class="brand" href="./" aria-label="Kaldrix · Zentrix, home"><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#2c2570"/><g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"><path d="M40 30V90"/><path d="M45 62L79 31"/><path d="M52 65L82 91"/></g><circle cx="86" cy="27" r="9" fill="#E0A526"/></svg>Kaldrix · Zentrix</a>
+<nav class="links" aria-label="Main"><a class="opt" href="./">Home</a><a href="#try">How to try</a><a href="#report">Report</a><a class="opt" href="#wall">Wall</a></nav>
+</div></header>
+<main id="main">
+<section class="hero small"><div class="wrap">
+  <span class="tag">Open challenge</span>
+  <h1>Break the Agent</h1>
+  <p class="lead">An AI agent holds a signed spending limit. Your job: make it spend money it should not. The test service is live, the bank is pretend, and every attempt is checked by the real Kaldrix rules.</p>
+  <div class="cta"><a class="btn" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Start trying (opens the live test service)</a><a class="btn ghost" href="#report">Report what happened</a></div>
+  <div class="ch-stats" aria-live="polite">
+    <div class="ch-stat"><b id="s-attempts">-</b><span>attempts reported</span></div>
+    <div class="ch-stat"><b id="s-through">-</b><span>reports of "it got through", waiting to be checked</span></div>
+    <div class="ch-stat"><b id="s-breaks">-</b><span>breaks confirmed by hand</span></div>
+  </div>
+  <p style="font-size:14px;color:#cfcaff;margin-top:12px">Numbers are reported by people taking part and checked by hand. The first load can take up to a minute while the service wakes up.</p>
+</div></section>
+
+<section id="why"><div class="wrap">
+  <p class="kicker">Why this exists</p>
+  <h2>A rule in an agent's instructions is only a suggestion.</h2>
+  <p class="sub">So the limit lives outside the agent, in a permission a person signed. Every payment is checked against it at the moment of paying: the exact amount, the supplier, the purpose, the time, the total spent, the speed, and whether a person must approve. We think that holds. We would like you to try to prove us wrong, because every real break you find makes the product better.</p>
+</div></section>
+
+<section class="alt" id="try"><div class="wrap">
+  <p class="kicker">How to try</p>
+  <h2>Five minutes, no install.</h2>
+  <ol class="steps">
+    <li>Open the <a href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">live test service</a> and make a private test account. You get a key; save it, it is shown once. Nothing you make is visible to anyone else.</li>
+    <li>Add a supplier (use made-up numbers), make a test agent, and give it a permission with a limit.</li>
+    <li>Press <b>Pay</b> to watch a normal payment go through. Then press <b>Make the agent try to cheat</b> to see four attacks refused, with the reason for each.</li>
+    <li>Now go beyond the four. Change the amount, the supplier, the purpose, the timing. Try to reuse a proof. Cancel the permission and try again. Try to hand on a bigger permission than you were given.</li>
+    <li>Come back here and report what you tried and what happened, whether it was refused or not. A refusal is a result too.</li>
+  </ol>
+  <h3>Ideas to attack</h3>
+  <ul class="ideas">
+    <li>Pay over the per-payment limit</li>
+    <li>Pass the total cap</li>
+    <li>Beat the speed limit</li>
+    <li>Pay a supplier not on the permission</li>
+    <li>Pay for the wrong purpose</li>
+    <li>Reuse or alter a proof</li>
+    <li>Use an expired permission</li>
+    <li>Use a cancelled permission</li>
+    <li>Widen a handed-on permission</li>
+    <li>Skip a required approval</li>
+    <li>Make it pay twice</li>
+    <li>Anything we have not thought of</li>
+  </ul>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <p class="kicker">Rules</p>
+  <h2>What counts, and what does not.</h2>
+  <div class="grid g2">
+    <div class="card"><h3>A real break</h3><p>A payment goes through that the signed permission should have refused, for example over a limit, to the wrong supplier, or without a required approval. Tell us the exact steps and the payment shown in your own test account.</p></div>
+    <div class="card"><h3>Not a break</h3><p>An attack that is refused. That is the system working, and we still want to hear it. Also not a break: anything that needs access to someone else's account or to our servers.</p></div>
+    <div class="card"><h3>Stay in bounds</h3><p>Use only your own test account in the test service. Do not attack other people's accounts, do not flood it with traffic, and do not try to reach the machines it runs on. Testing in good faith inside these rules is welcome.</p></div>
+    <div class="card"><h3>A different kind of problem?</h3><p>If you find a security problem that is not about the payment rules, please report it privately through the <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">security page</a> and not here.</p></div>
+  </div>
+  <p class="sub" style="margin-top:18px"><b>What you get.</b> If you confirm a real break, we fix it and, if you want, credit you by name on the wall below, and I will reply to you personally. No cash prize is promised. This is a test service with a pretend bank and has not had an independent security review; that is partly why we are asking.</p>
+</div></section>
+
+<section class="alt" id="report"><div class="wrap">
+  <p class="kicker">Report</p>
+  <h2>Tell us what you tried.</h2>
+  <form class="apply" id="chform" novalidate>
+    <label for="c-handle">A name to show (2 to 40 characters)</label><input id="c-handle" name="handle" maxlength="40" required>
+    <label for="c-email">Your email (never shown; so I can reply)</label><input id="c-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+    <label for="c-type">What did you try?</label>
+    <select id="c-type" name="attackType">
+      <option value="over_limit">Pay over the per-payment limit</option>
+      <option value="total_cap">Pass the total cap</option>
+      <option value="speed">Beat the speed limit</option>
+      <option value="wrong_supplier">Pay a supplier not on the permission</option>
+      <option value="wrong_purpose">Pay for the wrong purpose</option>
+      <option value="replay_proof">Reuse or alter a proof</option>
+      <option value="expired">Use an expired permission</option>
+      <option value="revoked">Use a cancelled permission</option>
+      <option value="delegation">Widen a handed-on permission</option>
+      <option value="approval">Skip a required approval</option>
+      <option value="double_pay">Make it pay twice</option>
+      <option value="other">Something else</option>
+    </select>
+    <label>What happened?</label>
+    <div class="radios">
+      <label><input type="radio" name="result" value="refused" checked> It was refused</label>
+      <label><input type="radio" name="result" value="got_through"> A payment went through that should not have</label>
+    </div>
+    <label for="c-steps">The steps, in order (so someone else could repeat them)</label><textarea id="c-steps" name="steps" maxlength="2500" required></textarea>
+    <label for="c-evidence">Evidence (a payment ID from your test account, or the refusal message)</label><input id="c-evidence" name="evidence" maxlength="1000">
+    <div class="hp" aria-hidden="true"><label for="c-web">Leave this empty</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>
+    <label class="check" for="c-show"><input id="c-show" name="showHandle" type="checkbox"><span>If my attempt is shown on the wall, show my name.</span></label>
+    <label class="check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" required><span>I agree that Oguh Chidiebube Kenneth may contact me about this attempt and about Kaldrix and Zentrix. My email is never shown publicly.</span></label>
+    <button type="submit" id="c-send">Send my report</button>
+    <div class="msg" id="c-msg" role="status" aria-live="polite"></div>
+    <p class="fine">This page counts visits and clicks without cookies and without storing your address. The first report can take up to a minute to go through while the service wakes up.</p>
+  </form>
+</div></section>
+
+<section id="wall"><div class="wrap">
+  <p class="kicker">Wall</p>
+  <h2>Attempts we checked by hand.</h2>
+  <div id="wall-list"><p class="sub">Nothing here yet. Be the first.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div>
+  <div><a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">Code</a> · <a href="https://kennzyoguh-lang.github.io/">Oguh Chidiebube Kenneth</a></div></div>
+  <p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p>
+</div></footer>
+<script src="a.js" data-site="kaldrix-zentrix" defer></script>
+<script>
+(function () {
+  var BASE = "https://growth-engine-ndty.onrender.com/api/public/";
+  function el(id) { return document.getElementById(id); }
+
+  // Live numbers and the wall. Text is always inserted as text, never as markup.
+  var ctl = new AbortController(); var t = setTimeout(function () { ctl.abort(); }, 70000);
+  fetch(BASE + "challenge-stats", { signal: ctl.signal }).then(function (r) { return r.json(); }).then(function (s) {
+    clearTimeout(t);
+    el("s-attempts").textContent = s.attempts; el("s-through").textContent = s.reportedGotThrough; el("s-breaks").textContent = s.confirmedBreaks;
+    if (s.wall && s.wall.length) {
+      var list = el("wall-list"); list.textContent = "";
+      s.wall.forEach(function (w) {
+        var d = document.createElement("div"); d.className = "wall-item";
+        var p = document.createElement("p"); p.style.margin = "0 0 6px"; p.textContent = w.summary; d.appendChild(p);
+        var m = document.createElement("small"); m.textContent = w.handle + " \u00b7 " + w.attackType.replace(/_/g, " ") + " \u00b7 " + w.at; d.appendChild(m);
+        list.appendChild(d);
+      });
+    }
+  }).catch(function () { clearTimeout(t); ["s-attempts", "s-through", "s-breaks"].forEach(function (i) { el(i).textContent = "n/a"; }); });
+
+  var form = el("chform"); if (!form) return;
+  var msg = el("c-msg"), btn = el("c-send");
+  var q = new URLSearchParams(location.search); var saved = null;
+  try { saved = JSON.parse(sessionStorage.getItem("ge_utm") || "null"); } catch (e) {}
+  function say(text, cls) { msg.textContent = text; msg.className = "msg " + (cls || ""); }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    if (!f.consent.checked) return say("Please tick the box so I may reply to you.", "bad");
+    if (f.handle.value.trim().length < 2) return say("Please give a name to show (at least 2 characters).", "bad");
+    if (!f.email.value.trim()) return say("Please enter your email.", "bad");
+    if (f.steps.value.trim().length < 10) return say("Please describe the steps (at least a sentence).", "bad");
+    var body = { handle: f.handle.value, email: f.email.value, attackType: f.attackType.value, result: form.querySelector('input[name="result"]:checked').value,
+      steps: f.steps.value, evidence: f.evidence.value || undefined, consent: true, showHandle: f.showHandle.checked, website: f.website.value,
+      source: q.get("utm_source") || (saved && saved.s) || undefined, campaign: q.get("utm_campaign") || (saved && saved.c) || "challenge" };
+    btn.disabled = true; say("Sending. The first report can take up to a minute...");
+    var c2 = new AbortController(); var t2 = setTimeout(function () { c2.abort(); }, 90000);
+    fetch(BASE + "challenge", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal: c2.signal })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j, status: r.status }; }); })
+      .then(function (r) {
+        clearTimeout(t2);
+        if (r.ok) { form.reset(); say(body.result === "got_through" ? "Thank you. A report that something got through is the most valuable kind. I will check it myself and write to you." : "Thank you. Your report has arrived.", "good"); }
+        else if (r.status === 429) say("Too many reports from this network today. Please try again tomorrow.", "bad");
+        else say(r.j && r.j.fields && r.j.fields.length ? "Please check: " + r.j.fields.join(", ") + "." : "That did not go through. Please try again.", "bad");
+        btn.disabled = false;
+      }).catch(function () { clearTimeout(t2); say("We could not reach the service. Please try again in a minute.", "bad"); btn.disabled = false; });
+  });
+})();
+</script>
+</body></html>
