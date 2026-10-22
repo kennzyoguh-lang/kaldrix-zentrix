@@ -104,6 +104,20 @@
   @media (prefers-color-scheme: dark) { .chip.wait { background: #3d2f08; color: #f4cc6a; } .chip.plan { background: #2a2570; color: #cfcaff; } }
   .status { margin-top: 12px; font-size: 15px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
   .pillar h3 { margin-top: 0; }
+
+.apply{max-width:640px}
+.apply label{display:block;margin:14px 0 4px;font-size:15px;font-weight:600}
+.apply input,.apply select,.apply textarea{width:100%;padding:11px 12px;border:1px solid #c9ccd6;border-radius:8px;font:inherit;background:#fff;color:#14161f}
+.apply textarea{min-height:96px;resize:vertical}
+.apply .check{display:flex;gap:10px;align-items:flex-start;margin:16px 0 4px;font-size:14px;font-weight:400}
+.apply .check input{width:auto;margin-top:3px}
+.apply .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.apply button{margin-top:16px;padding:12px 22px;border-radius:8px;border:1px solid var(--violet);background:var(--violet);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.apply button:disabled{opacity:.6;cursor:default}
+.apply .msg{margin-top:12px;font-size:15px;min-height:1.4em}
+.apply .msg.bad{color:#b00020}
+.apply .msg.good{color:#0b6b3a}
+.apply .fine{font-size:13px;color:#5b6070;margin-top:10px}
 </style>
 </head>
 <body>
@@ -273,11 +287,30 @@
 </div></section>
 
 <section id="talk"><div class="wrap">
-  <p class="kicker">Contact</p>
-  <h2>Building agents that touch money?</h2>
-  <p class="sub">If you build agents, run a payments, banking or AI platform, or invest in this space, I would like to hear what would make this safe enough for you.</p>
-  <p class="cta"><a class="btn" style="border-color:var(--violet);background:var(--violet);color:#fff !important" href="https://github.com/kennzyoguh-lang/kaldrix-connect/issues/new?title=Let%27s%20talk" target="_blank" rel="noopener">Let's talk</a>
-  <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://kennzyoguh-lang.github.io/">About the founder</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/kaldrix/" target="_blank" rel="noopener">Kaldrix on LinkedIn</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/zentrix-gateway/" target="_blank" rel="noopener">Zentrix on LinkedIn</a></p>
+  <p class="kicker">Work with us</p>
+  <h2>Building agents that touch money? Be one of our first design partners.</h2>
+  <p class="sub">A design partner tries Kaldrix on one real workflow, free and in test mode, and tells us the truth. You get a direct line to the founder and a say in what we build next. If you build agents, run a payments, banking or AI platform, work in AI security, or invest in this space, write to us.</p>
+  <form class="apply" id="apply" novalidate>
+    <label for="f-kind">I am</label>
+    <select id="f-kind" name="kind">
+      <option value="design_partner">A team that wants to try it (design partner)</option>
+      <option value="contact">Just getting in touch</option>
+      <option value="security">From a security company</option>
+      <option value="investor">An investor</option>
+      <option value="other">Something else</option>
+    </select>
+    <label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required maxlength="120">
+    <label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="254">
+    <label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" maxlength="160">
+    <label for="f-role">Your role</label><input id="f-role" name="role" maxlength="120">
+    <label for="f-use">What would you want to try, or what worries you most about agents that pay?</label><textarea id="f-use" name="useCase" maxlength="1500"></textarea>
+    <div class="hp" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+    <label class="check" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required><span>I agree that Oguh Chidiebube Kenneth may contact me about Kaldrix and Zentrix using these details. I can ask for them to be deleted at any time.</span></label>
+    <button type="submit" id="f-send">Send</button>
+    <div class="msg" id="f-msg" role="status" aria-live="polite"></div>
+    <p class="fine">This site counts visits and button clicks without cookies and without storing your address. The first message can take up to a minute to go through while the service wakes up.</p>
+  </form>
+  <p class="cta" style="margin-top:22px"><a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://kennzyoguh-lang.github.io/">About the founder</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/kaldrix/" target="_blank" rel="noopener">Kaldrix on LinkedIn</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://www.linkedin.com/company/zentrix-gateway/" target="_blank" rel="noopener">Zentrix on LinkedIn</a> <a class="btn ghost" style="color:var(--violet) !important;border-color:var(--violet)" href="https://github.com/kennzyoguh-lang/kaldrix-connect/issues/new?title=Let%27s%20talk" target="_blank" rel="noopener">Or open an issue on GitHub</a></p>
 </div></section>
 </main>
 <footer><div class="wrap">
@@ -285,4 +318,41 @@
   <div><a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">Code</a> · <a href="https://kennzyoguh-lang.github.io/">Oguh Chidiebube Kenneth</a></div></div>
   <p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p>
 </div></footer>
+<script src="a.js" data-site="kaldrix-zentrix" defer></script>
+<script>
+(function () {
+  var form = document.getElementById("apply");
+  if (!form) return;
+  var API = "https://growth-engine-ndty.onrender.com/api/public/lead";
+  var msg = document.getElementById("f-msg"), btn = document.getElementById("f-send");
+  var q = new URLSearchParams(location.search);
+  var saved = null;
+  try { saved = JSON.parse(sessionStorage.getItem("ge_utm") || "null"); } catch (e) {}
+  function say(text, cls) { msg.textContent = text; msg.className = "msg " + (cls || ""); }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    if (!f.consent.checked) return say("Please tick the box so we may reply to you.", "bad");
+    if (!f.name.value.trim() || !f.email.value.trim()) return say("Please enter your name and email.", "bad");
+    var body = {
+      kind: f.kind.value, name: f.name.value, email: f.email.value, company: f.company.value || undefined, role: f.role.value || undefined,
+      useCase: f.useCase.value || undefined, consent: true, website: f.website.value,
+      source: q.get("utm_source") || (saved && saved.s) || undefined, medium: q.get("utm_medium") || (saved && saved.m) || undefined,
+      campaign: q.get("utm_campaign") || (saved && saved.c) || undefined, page: location.pathname
+    };
+    btn.disabled = true; say("Sending. The first message can take up to a minute...");
+    var ctl = new AbortController(); var t = setTimeout(function () { ctl.abort(); }, 90000);
+    fetch(API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j, status: r.status }; }); })
+      .then(function (r) {
+        clearTimeout(t);
+        if (r.ok) { form.reset(); say("Thank you. Your message has arrived. I will reply personally.", "good"); }
+        else if (r.status === 429) say("Too many messages from this network today. Please try again tomorrow.", "bad");
+        else say(r.j && r.j.fields && r.j.fields.length ? "Please check: " + r.j.fields.join(", ") + "." : "That did not go through. Please try again.", "bad");
+        btn.disabled = false;
+      })
+      .catch(function () { clearTimeout(t); say("We could not reach the service. Please try again in a minute, or open an issue on GitHub.", "bad"); btn.disabled = false; });
+  });
+})();
+</script>
 </body></html>
