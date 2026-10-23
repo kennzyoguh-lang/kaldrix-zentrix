@@ -124,14 +124,14 @@
 <a class="skip" href="#main">Skip to the content</a>
 <header class="nav"><div class="wrap">
 <a class="brand" href="#top" aria-label="Kaldrix · Zentrix, home"><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#2c2570"/><g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"><path d="M40 30V90"/><path d="M45 62L79 31"/><path d="M52 65L82 91"/></g><circle cx="86" cy="27" r="9" fill="#E0A526"/></svg>Kaldrix · Zentrix</a>
-<nav class="links" aria-label="Main"><a class="opt" href="#watch">Watch</a><a class="opt" href="#zentrix">Zentrix</a><a class="opt" href="#how">How it works</a><a class="opt" href="#today">What works today</a><a class="opt" href="#fit">Works with</a><a href="#try">Try it</a><a href="challenge.html">Break it</a><a href="#talk">Contact</a></nav>
+<nav class="links" aria-label="Main"><a class="opt" href="#watch">Watch</a><a class="opt" href="#zentrix">Zentrix</a><a class="opt" href="#data">Data access</a><a class="opt" href="#how">How it works</a><a class="opt" href="#today">What works today</a><a class="opt" href="#fit">Works with</a><a href="#try">Try it</a><a href="challenge.html">Break it</a><a href="investors.html">Investors</a><a href="partners.html">Design partners</a><a class="opt" href="learn/">Learn</a><a href="#talk">Contact</a></nav>
 </div></header>
 
 <main id="main">
 <div class="hero" id="top"><div class="wrap">
   <span class="tag">Test service · pretend bank · no real money</span>
   <h1>The trust layer for AI agents that move money.</h1>
-  <p class="lead"><strong>Kaldrix</strong> gives an agent a signed limit. <strong>Zentrix</strong> is the conditional escrow and execution clearinghouse: money moves only when the agent proves it did exactly what it was told.</p>
+  <p class="lead"><strong>Kaldrix</strong> gives an agent a signed limit on what it can spend or read. <strong>Zentrix</strong> is the conditional escrow and execution clearinghouse: money moves only when the agent proves it did exactly what it was told.</p>
   <div class="cta"><a class="btn" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Try the live demo (30 seconds)</a><a class="btn ghost" href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">See the code</a><a class="btn ghost" href="challenge.html">Try to break it</a></div>
   <p class="fine">The demo sleeps when nobody is using it, so the first open can take up to 30 seconds. After that it is quick.</p>
 </div></div>
@@ -188,14 +188,31 @@
   <div class="grid g3">
     <div class="card"><div class="num">1</div><h3>Conditional escrow</h3>
       <p>Basic payment triggers are fine for tiny purchases, like fractions of a cent for an API call. Real business is less predictable: an agent that orders inventory or runs a multi-step purchase needs funds locked, and released only when the task is verified to have stayed inside its exact scope, with no hijacking or prompt manipulation.</p>
-      <div class="status"><span class="chip ok">Working today</span> A payment is released only after its signed proof checks pass, and payments above your limit wait for a person.<br><span class="chip plan">Designed next</span> A locked escrow vault for multi-step tasks.</div></div>
+      <div class="status"><span class="chip ok">Working today</span> A payment is released only after its signed proof checks pass, and payments above your limit wait for a person.<br><span class="chip ok">Working in the test service</span> A conditional escrow: funds are set aside for a task and released only when the agent proves, with its own signed statement, that it produced exactly the outputs the task required, and Kaldrix allows the payment again at release. <span class="chip wait">Simulation</span> The vault is a hold in a pretend bank; a real vault needs a licensed provider holding the funds.</div></div>
     <div class="card"><div class="num">2</div><h3>Proof-of-intent compliance envelope</h3>
       <p>Banks and card issuers freeze autonomous transactions because nobody can verify who approved the command. Every Zentrix payment carries a signed envelope created at the point of execution: the parent authority, the scope, and the time limits the agent was given before the money moved.</p>
       <div class="status"><span class="chip ok">Working in the test service</span> Each successful payment returns a signed envelope. You can open one in the live demo.</div></div>
     <div class="card"><div class="num">3</div><h3>Cross-rail settlement</h3>
       <p>An agent holding stablecoins on an international cloud can not buy from a vendor that only accepts a local bank transfer. Zentrix takes the settlement request, handles conversion, and settles onto local networks such as Nigeria's NIP, Kenya's M-Pesa or Brazil's PIX.</p>
-      <div class="status"><span class="chip ok">Working today</span> Nigerian bank transfers through Paystack in real test mode.<br><span class="chip wait">Built, live test pending</span> Flutterwave.<br><span class="chip plan">Planned</span> M-Pesa, PIX and stablecoin conversion.</div></div>
+      <div class="status"><span class="chip ok">Working today</span> Nigerian bank transfers through Paystack in real test mode.<br><span class="chip wait">Built, live test pending</span> Flutterwave.<br><span class="chip ok">Working in the test service</span> Quotes and receipts for NIP (Nigeria), M-Pesa (Kenya) and PIX (Brazil). <span class="chip wait">Simulation</span> Fixed illustrative rates and clearly marked references; nothing is connected to those networks.</div></div>
   </div>
+</div></section>
+
+<section id="data"><div class="wrap">
+  <p class="kicker">Kaldrix also guards data</p>
+  <h2>An agent allowed to read support tickets should not be able to read payroll.</h2>
+  <p class="sub">The same signed permission that limits a payment can limit database access: which tables, which operations, which columns or rows, <strong>for what purpose</strong>, and <strong>for how long</strong>. It is checked on every statement, outside the agent. A tricked agent that asks for payroll, joins to a table it was not given, drops a table, or asks after its time has run out is refused, and the database sees nothing.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>The agent asks</th><th>With a permission to read support tickets for 60 seconds</th></tr></thead>
+    <tbody>
+      <tr><td><code>SELECT * FROM support_tickets WHERE status = 'open'</code></td><td><span class="pill ok">Allowed</span></td></tr>
+      <tr><td><code>SELECT * FROM payroll</code></td><td><span class="pill no">Refused</span> not a table it was given</td></tr>
+      <tr><td><code>SELECT ... FROM support_tickets JOIN payroll ...</code></td><td><span class="pill no">Refused</span> every table a query touches must be covered</td></tr>
+      <tr><td><code>UPDATE support_tickets SET status = 'closed'</code></td><td><span class="pill no">Refused</span> it may read, not change</td></tr>
+      <tr><td><code>DROP TABLE support_tickets</code></td><td><span class="pill no">Refused</span> schema changes are never allowed</td></tr>
+      <tr><td>The same allowed query, 61 seconds later</td><td><span class="pill no">Refused</span> the time ended while the agent was still running</td></tr>
+    </tbody></table></div>
+  <div class="status"><span class="chip ok">Working in the test service</span> Tables, operations, columns and rows; purpose and time bound; cancelling at once; a probing agent freezes its own permission. <span class="chip wait">Early</span> It serves one pretend database; no real database is connected, and a statement is judged from its text, so a trigger or stored routine can do more than it shows. Read <a href="learn/limit-ai-agent-database-access.html">how it works and what it cannot do</a>.</div>
 </div></section>
 
 <section class="alt" id="how"><div class="wrap">
@@ -223,11 +240,11 @@
 <section id="fit"><div class="wrap">
   <p class="kicker">Works with</p>
   <h2>Built to sit on top of the protocols, not to fight them.</h2>
-  <p class="sub">These are the integration paths we are designing. <strong>No partnership or integration with any company below is claimed today.</strong></p>
+  <p class="sub">These are built as working code against the public specifications. <strong>No partnership with any company below is claimed, and none of them has endorsed this.</strong></p>
   <div class="grid g3">
-    <div class="card"><h3>x402 (Coinbase)</h3><p>x402 moves funds whenever a server returns a payment request. It does not check whether the agent was tricked into paying the wrong address. Zentrix would sit in the middle as a facilitator, verifying the execution proof before the transaction is broadcast.</p><div class="status"><span class="chip plan">Planned</span></div></div>
-    <div class="card"><h3>AP2 (Google)</h3><p>AP2 signs the user's mandate before an agent buys. Settlement still depends on the rails underneath. Zentrix would turn a mandate into a strictly bounded payout on bank networks, where card rails do not reach.</p><div class="status"><span class="chip plan">Planned</span></div></div>
-    <div class="card"><h3>Agent card platforms</h3><p>Virtual cards with daily caps can not stop an agent from spending its allowance on a bad target. Zentrix would act as an authorization sidecar, checking that the transaction matches what the agent is actually running before the card authorization clears.</p><div class="status"><span class="chip plan">Planned</span></div></div>
+    <div class="card"><h3>x402 (Coinbase)</h3><p>x402 moves funds whenever a server returns a payment request. It does not check whether the agent was tricked into paying the wrong address. Zentrix sits in the middle as a facilitator and verifies the execution proof before the payment is settled: a well-formed payment with no permission, to the wrong address or over the limit is refused.</p><div class="status"><span class="chip ok">Working in the test service</span> <span class="chip wait">Simulation</span> No blockchain: a made-up token on a test network, and the wallet signature is not checked. Public client-side guard: <a href="https://github.com/kennzyoguh-lang/kaldrix-x402-guard" target="_blank" rel="noopener">kaldrix-x402-guard</a>.</div></div>
+    <div class="card"><h3>AP2 (Google)</h3><p>AP2 signs the user's mandate before an agent buys. Settlement still depends on the rails underneath. Zentrix checks that a closed payment satisfies the constraints of the open mandate (amount, payees, budget, dates, an unknown constraint fails) before it becomes a payout.</p><div class="status"><span class="chip ok">Working in the test service</span> <span class="chip wait">Early</span> It does not verify the signatures; AP2 version 0.2 is pre-release and may change.</div></div>
+    <div class="card"><h3>Agent card platforms</h3><p>Virtual cards with daily caps can not stop an agent from spending its allowance on a bad target. Zentrix acts as an authorization sidecar: the card platform asks whether a card authorization matches what the agent was approved for (same amount, currency and merchant, once, before it expires).</p><div class="status"><span class="chip ok">Working in the test service</span> <span class="chip wait">Simulation</span> No card network or card issuer is connected.</div></div>
   </div>
 </div></section>
 
@@ -257,9 +274,9 @@
       <tr><td>Private test accounts for developers, with a dashboard and a one-click demo</td><td><span class="pill ok">Working</span></td></tr>
       <tr><td>A connector for AI assistants (Claude, Cursor, Copilot, Codex)</td><td><span class="pill ok">Working</span></td></tr>
       <tr><td>Flutterwave as a second provider</td><td><span class="pill wait">Built, live test pending</span></td></tr>
-      <tr><td>Escrow vault for multi-step tasks</td><td><span class="pill no">Not yet</span> designed</td></tr>
-      <tr><td>M-Pesa, PIX and stablecoin conversion</td><td><span class="pill no">Not yet</span> planned</td></tr>
-      <tr><td>x402, AP2 and card-platform integrations</td><td><span class="pill no">Not yet</span> planned</td></tr>
+      <tr><td>Purpose-bound, time-bound database access for agents (tables, operations, columns, rows; ends when the time ends)</td><td><span class="pill ok">Working in the test service</span> one pretend database; no real database is connected</td></tr>
+      <tr><td>Conditional escrow, an x402 facilitator, an AP2 constraint check, a card-authorization sidecar</td><td><span class="pill ok">Working in the test service</span> simulations: a pretend bank, no blockchain, no card network</td></tr>
+      <tr><td>NIP, M-Pesa and PIX settlement</td><td><span class="pill wait">Simulated</span> fixed illustrative rates; no connection to any of those networks; stablecoin conversion is not built</td></tr>
       <tr><td>Real money</td><td><span class="pill no">Not yet</span> needs a licensed partner in Nigeria</td></tr>
       <tr><td>Independent security review</td><td><span class="pill no">Not yet</span> we have run our own adversarial review</td></tr>
     </tbody></table></div>
@@ -315,7 +332,7 @@
 </main>
 <footer><div class="wrap">
   <div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div>
-  <div><a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">Code</a> · <a href="https://kennzyoguh-lang.github.io/">Oguh Chidiebube Kenneth</a></div></div>
+  <div><a href="investors.html">Investors</a> · <a href="partners.html">Design partners</a> · <a href="learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect" target="_blank" rel="noopener">Code</a> · <a href="https://kennzyoguh-lang.github.io/">Oguh Chidiebube Kenneth</a></div></div>
   <p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p>
 </div></footer>
 <script src="a.js" data-site="kaldrix-zentrix" defer></script>

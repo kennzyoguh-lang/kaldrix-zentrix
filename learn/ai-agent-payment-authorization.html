@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI agent payment authorization: how it works and what to look for</title>
+<meta name="description" content="What payment authorization means for AI agents, why logins and API keys are not enough, and how signed capability tokens with proof of possession bind a permission to one exact payment.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#17124A">
+<meta property="og:title" content="AI agent payment authorization: how it works and what to look for">
+<meta property="og:description" content="What payment authorization means for AI agents, why logins and API keys are not enough, and how signed capability tokens with proof of possession bind a permission to one exact payment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html">
+<meta property="og:site_name" content="Kaldrix and Zentrix">
+<meta property="og:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<link rel="canonical" href="https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI agent payment authorization: how it works and what to look for", "description": "What payment authorization means for AI agents, why logins and API keys are not enough, and how signed capability tokens with proof of possession bind a permission to one exact payment.", "url": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html", "author": {"@type": "Person", "name": "Oguh Chidiebube Kenneth"}, "publisher": {"@type": "Organization", "name": "Kaldrix", "url": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}, "mainEntityOfPage": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html", "image": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png", "datePublished": "2026-10-23", "dateModified": "2026-10-23"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between authentication and authorization for AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "Authentication proves who is asking. Authorization decides what they may do. An agent that is logged in can still be tricked, so the limit has to be on the action, not the login."}}, {"@type": "Question", "name": "What is proof of possession?", "acceptedAnswer": {"@type": "Answer", "text": "The agent signs each request with its own private key, so a stolen or copied permission does not work without that key."}}, {"@type": "Question", "name": "Why bind a proof to one exact payment?", "acceptedAnswer": {"@type": "Answer", "text": "So a proof for one amount and one recipient cannot be stretched to pay a different amount or a different recipient."}}, {"@type": "Question", "name": "Do I still need multi-factor authentication?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for the people who sign and approve. It protects the door. Signed limits protect the money behind it."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}, {"@type": "ListItem", "position": 2, "name": "Learn", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/"}, {"@type": "ListItem", "position": 3, "name": "AI agent payment authorization, explained", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="../" aria-label="Kaldrix and Zentrix, home"><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#2c2570"/><g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"><path d="M40 30V90"/><path d="M45 62L79 31"/><path d="M52 65L82 91"/></g><circle cx="86" cy="27" r="9" fill="#E0A526"/></svg>Kaldrix · Zentrix</a><nav class="links" aria-label="Main"><a href="../investors.html">Investors</a><a href="../partners.html">Design partners</a><a class=opt href="../learn/" aria-current="page">Learn</a><a class=opt href="../challenge.html">Break it</a><a href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Live demo</a></nav></div></header>
+<div class="hero" style="padding:48px 0 52px"><div class="narrow"><div class="crumbs"><a href="../">Home</a> / <a href="./">Learn</a></div><h1 style="max-width:24ch">AI agent payment authorization, explained</h1><p class="lead" style="margin-bottom:0">Authentication says who is asking. Authorization says what they may do. For an agent that can move money, authorization has to be exact, narrow, expiring and checkable by someone other than the agent.</p></div></div>
+<main id="main">
+<section><div class="narrow"><article>
+<h2>Authentication is not authorization</h2>
+<p>A login, a password, a multi-factor code or an API key proves who is asking. After that, the account usually allows whatever the account is allowed to do, for as long as the session lasts. That is fine for a person who can be trusted to use judgement. It is a poor fit for an agent that follows instructions found in text. The question that matters for an agent is not "who are you?" but "what exactly may you do right now, and who said so?"</p>
+<h2>How common approaches compare</h2>
+<div class="tablewrap"><table>
+<tr><th>Approach</th><th>Strength</th><th>Weakness for agents that pay</th></tr>
+<tr><td>Shared API key</td><td>Simple.</td><td>Anyone with the key can spend everything it allows.</td></tr>
+<tr><td>OAuth scope</td><td>Standard, revocable.</td><td>Scopes say what kind of action, not how much, to whom, or how often.</td></tr>
+<tr><td>Company card with a limit</td><td>Familiar.</td><td>One limit for everything, no purpose, hard to bind to a task.</td></tr>
+<tr><td>Agent wallet with rules</td><td>Money held under rules.</td><td>Rules live in one system; you trust that system and its rule engine.</td></tr>
+<tr><td>AI model judging each request</td><td>Flexible.</td><td>A model can be talked round.</td></tr>
+<tr><td>Signed capability with proof of possession</td><td>Exact, narrowing, checkable by anyone.</td><td>Needs a checker on every payment.</td></tr>
+</table></div>
+<h2>What a signed capability is</h2>
+<p>A capability is a signed statement that says: this agent may pay these suppliers, up to this much, for this purpose, until this time. It is signed by the person or system that has the authority, so it cannot be forged or edited. Two properties make it strong for money:</p>
+<ul>
+<li><strong>Narrowing only.</strong> If an agent hands work to another agent, it can pass on a slice of the permission, never a bigger one.</li>
+<li><strong>Proof of possession.</strong> Holding the permission is not enough. On each request the agent signs the exact payment (amount, recipient, currency) with its own key. A proof made for 200 cannot be stretched to 450, and a copied permission is useless without the agent's private key.</li>
+</ul>
+<h2>What to check on every request</h2>
+<ol>
+<li>The signature on the permission is valid and it has not expired or been cancelled.</li>
+<li>The agent's proof matches this exact payment.</li>
+<li>The payment is inside the per-payment limit, the running total and the speed limit.</li>
+<li>If the amount is above the approval threshold, a named human has approved this exact payment.</li>
+<li>The result is written to a record that cannot be changed quietly, and if the record cannot be written, nothing happens.</li>
+</ol>
+<h2>A second check before the money moves</h2>
+<p>One system saying yes is a single point of failure. In Kaldrix and Zentrix, Kaldrix decides, and Zentrix, the payment side, checks the signature again, applies its own limits and only then sends the payment. Either one can say no. Every successful payment returns a signed proof envelope showing who held the permission and exactly what was authorised.</p>
+<h2>Standards you will see around this</h2>
+<p>x402 describes how an agent pays for something over the web. AP2 describes signed mandates that capture what a person allowed. MCP describes how an agent gets tools. They are complementary: the protocols say how an agent asks and pays, and an authorization layer says whether it should. See <a href="x402-spending-limits.html">spending limits for x402</a> and <a href="ap2-mandate-verification.html">checking AP2 mandates</a>.</p>
+<p class="callout"><strong>Honest status.</strong> Kaldrix and Zentrix are a first version running as a test service with a pretend bank. They have had no independent security review. No partnership with any company named on this page is claimed.</p><div class="cta-box"><h2>Want to see a signed limit hold?</h2>
+<p>Try the live test service (pretend bank, no real money), or try to break it in the challenge. If you build agents that touch money, become a design partner.</p>
+<div class="cta"><a class="btn" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Try the live demo</a><a class="btn ghost" href="../challenge.html">Break the Agent challenge</a><a class="btn ghost" href="../partners.html">Become a design partner</a></div></div><h2>Questions people ask</h2><div class="faq"><details><summary>What is the difference between authentication and authorization for AI agents?</summary><p>Authentication proves who is asking. Authorization decides what they may do. An agent that is logged in can still be tricked, so the limit has to be on the action, not the login.</p></details><details><summary>What is proof of possession?</summary><p>The agent signs each request with its own private key, so a stolen or copied permission does not work without that key.</p></details><details><summary>Why bind a proof to one exact payment?</summary><p>So a proof for one amount and one recipient cannot be stretched to pay a different amount or a different recipient.</p></details><details><summary>Do I still need multi-factor authentication?</summary><p>Yes, for the people who sign and approve. It protects the door. Signed limits protect the money behind it.</p></details></div><h2>Keep reading</h2><div class="related"><a href="stop-ai-agent-overspending.html">How to stop an AI agent from overspending</a><a href="x402-spending-limits.html">x402 spending limits for AI agents</a><a href="ap2-mandate-verification.html">AP2 mandate verification for developers</a><a href="./">All guides</a><a href="../investors.html">For investors</a><a href="../partners.html">For design partners</a></div></article></div></section>
+</main>
+<footer><div class="wrap"><div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div><div><a href="../investors.html">Investors</a> · <a href="../partners.html">Design partners</a> · <a href="../learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a></div></div><p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p></div></footer><script src="../a.js" data-site="kaldrix-zentrix" defer></script>
+</body></html>

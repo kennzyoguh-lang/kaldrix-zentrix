@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/</loc></url>
-  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html</loc></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/</loc><lastmod>2026-10-23</lastmod><priority>1.0</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/investors.html</loc><lastmod>2026-10-23</lastmod><priority>0.9</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/partners.html</loc><lastmod>2026-10-23</lastmod><priority>0.9</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/x402-spending-limits.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ap2-mandate-verification.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/human-approval-ai-agent-payments.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/mcp-agent-payments-security.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payments-nigeria-africa.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/limit-ai-agent-database-access.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-escrow.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/temporary-permissions-for-ai-agents.html</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>
 </urlset>

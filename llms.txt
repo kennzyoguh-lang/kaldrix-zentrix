@@ -2,13 +2,30 @@
 
 > The trust layer for AI agents that move money. Kaldrix gives an AI agent a signed spending limit; Zentrix, the conditional escrow and execution clearinghouse, moves money only when the agent proves it stayed inside its exact instructions, and returns a signed proof-of-intent envelope with every payment.
 
-Status: a working test service with a pretend bank (no real money). Not independently security-reviewed yet. No partnerships are claimed.
+Status: a working test service with a pretend bank (no real money). Not independently security-reviewed yet. No customers, no revenue, and no partnerships are claimed.
+
+## For investors and design partners
+- [Investor brief, one page](https://kennzyoguh-lang.github.io/kaldrix-zentrix/investors.html)
+- [Design partner programme and letter of intent pack](https://kennzyoguh-lang.github.io/kaldrix-zentrix/partners.html)
+
+## Guides
+- [How to stop an AI agent from overspending](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html): A rule written in an agent's prompt is a suggestion. One clever message can argue the agent out of it. A real spending limit lives outside the agent and is checked at the moment of paying.
+- [AI agent payment authorization, explained](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payment-authorization.html): Authentication says who is asking. Authorization says what they may do. For an agent that can move money, authorization has to be exact, narrow, expiring and checkable by someone other than the agent.
+- [x402 spending limits for AI agents](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/x402-spending-limits.html): x402 lets a web server ask for payment and an agent pay it. The protocol does not say how much an agent may spend in total, whom it may pay, or when a person must approve. That has to be added.
+- [AP2 mandate verification for developers](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ap2-mandate-verification.html): AP2, Google's Agent Payments Protocol, records what a person allowed an agent to pay as signed mandates. Two jobs follow: verify the signatures, then check the actual payment against the constraints inside them.
+- [Human approval for AI agent payments](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/human-approval-ai-agent-payments.html): Letting an agent pay is useful only if a person does not have to approve everything. The skill is choosing the few payments that need a human and making that approval mean something.
+- [MCP payment tools: how to keep them safe](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/mcp-agent-payments-security.html): The Model Context Protocol (MCP) lets an AI assistant call tools. A payment tool is the highest-stakes tool you can add. These are the questions to ask before you do.
+- [AI agent payments in Nigeria and across Africa](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-payments-nigeria-africa.html): Most tools for agent payments talk about cards, dollars and stablecoins. Many businesses in Nigeria and across Africa pay suppliers by bank transfer through local payment providers. That changes what an agent needs.
+- [How to limit what an AI agent can do in your database](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/limit-ai-agent-database-access.html): Give an AI agent a database login and you have given it everything that login can do, to anyone who can get words in front of it. The limit has to be on each statement, outside the agent, for a stated purpose and a stated time.
+- [Escrow for AI agents: pay only when the task is proven](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/ai-agent-escrow.html): A payment trigger is fine for a fraction of a cent. A multi-step task needs the money set aside and released only when the work is proven, and the proof has to be something an agent cannot fake by saying so.
+- [Temporary permissions for AI agents](https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/temporary-permissions-for-ai-agents.html): An agent that runs for a minute should not hold a credential that lasts a year. A permission should exist for the task, be as narrow as the task, and be gone when the task is.
 
 ## Links
 - [Product site](https://kennzyoguh-lang.github.io/kaldrix-zentrix/)
 - [Live demo, pretend bank](https://kaldrix-sandbox.onrender.com)
-- [Break the Agent challenge: try to make a signed spending limit fail](https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html)
+- [Break the Agent challenge](https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html)
 - [Public connector for AI assistants (MCP)](https://github.com/kennzyoguh-lang/kaldrix-connect)
+- [x402 guard and AP2 constraint checker](https://github.com/kennzyoguh-lang/kaldrix-x402-guard)
 - [Founder: Oguh Chidiebube Kenneth](https://kennzyoguh-lang.github.io/)
 - [Kaldrix on LinkedIn](https://www.linkedin.com/company/kaldrix/)
 - [Zentrix on LinkedIn](https://www.linkedin.com/company/zentrix-gateway/)

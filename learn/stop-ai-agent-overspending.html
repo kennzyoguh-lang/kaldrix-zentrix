@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to stop an AI agent from overspending: five controls that work</title>
+<meta name="description" content="Why a rule in the prompt is not a spending limit, and five controls that hold when an AI agent is tricked: signed limits, totals and speed, human approval, kill switch and no raw keys.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#17124A">
+<meta property="og:title" content="How to stop an AI agent from overspending: five controls that work">
+<meta property="og:description" content="Why a rule in the prompt is not a spending limit, and five controls that hold when an AI agent is tricked: signed limits, totals and speed, human approval, kill switch and no raw keys.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html">
+<meta property="og:site_name" content="Kaldrix and Zentrix">
+<meta property="og:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<link rel="canonical" href="https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to stop an AI agent from overspending: five controls that work", "description": "Why a rule in the prompt is not a spending limit, and five controls that hold when an AI agent is tricked: signed limits, totals and speed, human approval, kill switch and no raw keys.", "url": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html", "author": {"@type": "Person", "name": "Oguh Chidiebube Kenneth"}, "publisher": {"@type": "Organization", "name": "Kaldrix", "url": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}, "mainEntityOfPage": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html", "image": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png", "datePublished": "2026-10-23", "dateModified": "2026-10-23"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I just put a spending limit in the system prompt?", "acceptedAnswer": {"@type": "Answer", "text": "No. A prompt rule can be overridden by any text the agent reads. Put the limit in a signed permission that a separate service checks on every payment."}}, {"@type": "Question", "name": "What is a good spending limit for an AI agent?", "acceptedAnswer": {"@type": "Answer", "text": "Start small and widen it. Set a per-payment limit, a total cap, a speed limit and a human approval threshold. Review the refusals each week and adjust."}}, {"@type": "Question", "name": "Should a human approve every agent payment?", "acceptedAnswer": {"@type": "Answer", "text": "No. That removes the benefit. Let the agent prepare payments inside strict limits and require a named person only above a threshold you choose."}}, {"@type": "Question", "name": "What happens if the agent's key is stolen?", "acceptedAnswer": {"@type": "Answer", "text": "If the key can only ask to pay inside a signed permission, the thief is held to the same limits. A cancelled permission stops working immediately."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/"}, {"@type": "ListItem", "position": 2, "name": "Learn", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/"}, {"@type": "ListItem", "position": 3, "name": "How to stop an AI agent from overspending", "item": "https://kennzyoguh-lang.github.io/kaldrix-zentrix/learn/stop-ai-agent-overspending.html"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="../" aria-label="Kaldrix and Zentrix, home"><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#2c2570"/><g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"><path d="M40 30V90"/><path d="M45 62L79 31"/><path d="M52 65L82 91"/></g><circle cx="86" cy="27" r="9" fill="#E0A526"/></svg>Kaldrix · Zentrix</a><nav class="links" aria-label="Main"><a href="../investors.html">Investors</a><a href="../partners.html">Design partners</a><a class=opt href="../learn/" aria-current="page">Learn</a><a class=opt href="../challenge.html">Break it</a><a href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Live demo</a></nav></div></header>
+<div class="hero" style="padding:48px 0 52px"><div class="narrow"><div class="crumbs"><a href="../">Home</a> / <a href="./">Learn</a></div><h1 style="max-width:24ch">How to stop an AI agent from overspending</h1><p class="lead" style="margin-bottom:0">A rule written in an agent&#x27;s prompt is a suggestion. One clever message can argue the agent out of it. A real spending limit lives outside the agent and is checked at the moment of paying.</p></div></div>
+<main id="main">
+<section><div class="narrow"><article>
+<h2>Why "tell the agent not to overspend" fails</h2>
+<p>An AI agent decides what to do by reading text. Text can be changed by anyone who can get words in front of the agent: an email it reads, a web page it opens, a message from a supplier, a document with hidden instructions. If the spending rule is part of that text, it can be overridden by the same route. Security people call this prompt injection. The fix is not a better prompt. The fix is to put the limit somewhere the agent cannot edit.</p>
+<h2>Five controls that hold</h2>
+<h3>1. A limit that is signed by a person and checked outside the agent</h3>
+<p>The permission says who may be paid, how much per payment, for what purpose and until when. It is signed, so it cannot be forged or edited. A separate service checks it on every payment. The agent can ask for anything; the service only says yes inside the signed limit. No AI model should make this decision, because a model can be talked round and a signed number cannot.</p>
+<h3>2. Three kinds of limit, not one</h3>
+<table><tr><th>Limit</th><th>What it stops</th></tr>
+<tr><td>Per payment</td><td>One big mistake or one big fraud.</td></tr>
+<tr><td>Total over the life of the permission</td><td>Death by a thousand small payments.</td></tr>
+<tr><td>Speed (for example, no more than five an hour)</td><td>A looping or hijacked agent draining money quickly.</td></tr></table>
+<p>All three must be counted exactly, including when several servers handle payments at once. Round amounts up, never down, so a fraction cannot slip under a limit.</p>
+<h3>3. A person for the big ones</h3>
+<p>Above an amount you choose, a named person must approve that exact payment. For very large amounts, two different people. The agent must never be able to approve its own payment. Approval of "the agent" in general is weaker than approval of one amount to one recipient.</p>
+<h3>4. A kill switch that works at once</h3>
+<p>You need to be able to cancel a permission in one click, including a permission that was passed on to another agent. A cancelled permission must fail on the very next request, not at the next login.</p>
+<h3>5. The agent never holds the raw key</h3>
+<p>If the agent holds an API key that can spend, anyone who steals or tricks that key can spend. Give the agent a limited key that can only ask to pay, and keep the signing key somewhere the agent cannot read. Then a stolen key is held small by the limits above.</p>
+<h2>A quick checklist for any tool you evaluate</h2>
+<ul>
+<li>Is the limit enforced outside the agent, at the payment, and does it fail closed if the checker is down?</li>
+<li>Does it count totals and speed, or only the size of one payment?</li>
+<li>Is the decision made by an AI model, or by signatures and exact numbers?</li>
+<li>Can a large payment require a named human, and can the agent approve its own?</li>
+<li>Can you cancel a permission and see the next payment refused?</li>
+<li>Is there a record nobody can quietly change?</li>
+</ul>
+<h2>Where Kaldrix and Zentrix fit</h2>
+<p>Kaldrix gives an agent a signed permission with these limits and checks it on every request. Zentrix is the payment side: it checks the signature again on its own, applies its own rules, never pays the same invoice twice, and returns a signed proof of what was authorised. You can watch a real agent get refused four ways in the <a href="../files/Kaldrix-live-agent-demo.mp4">90-second demo video</a> or try it yourself in the <a href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">test service</a>.</p>
+<p class="callout"><strong>Honest status.</strong> Kaldrix and Zentrix are a first version running as a test service with a pretend bank. They have had no independent security review. No partnership with any company named on this page is claimed.</p><div class="cta-box"><h2>Want to see a signed limit hold?</h2>
+<p>Try the live test service (pretend bank, no real money), or try to break it in the challenge. If you build agents that touch money, become a design partner.</p>
+<div class="cta"><a class="btn" href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Try the live demo</a><a class="btn ghost" href="../challenge.html">Break the Agent challenge</a><a class="btn ghost" href="../partners.html">Become a design partner</a></div></div><h2>Questions people ask</h2><div class="faq"><details><summary>Can I just put a spending limit in the system prompt?</summary><p>No. A prompt rule can be overridden by any text the agent reads. Put the limit in a signed permission that a separate service checks on every payment.</p></details><details><summary>What is a good spending limit for an AI agent?</summary><p>Start small and widen it. Set a per-payment limit, a total cap, a speed limit and a human approval threshold. Review the refusals each week and adjust.</p></details><details><summary>Should a human approve every agent payment?</summary><p>No. That removes the benefit. Let the agent prepare payments inside strict limits and require a named person only above a threshold you choose.</p></details><details><summary>What happens if the agent&#x27;s key is stolen?</summary><p>If the key can only ask to pay inside a signed permission, the thief is held to the same limits. A cancelled permission stops working immediately.</p></details></div><h2>Keep reading</h2><div class="related"><a href="ai-agent-payment-authorization.html">AI agent payment authorization, explained</a><a href="human-approval-ai-agent-payments.html">Human approval for AI agent payments</a><a href="mcp-agent-payments-security.html">MCP payment tools: how to keep them safe</a><a href="./">All guides</a><a href="../investors.html">For investors</a><a href="../partners.html">For design partners</a></div></article></div></section>
+</main>
+<footer><div class="wrap"><div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div><div><a href="../investors.html">Investors</a> · <a href="../partners.html">Design partners</a> · <a href="../learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a></div></div><p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p></div></footer><script src="../a.js" data-site="kaldrix-zentrix" defer></script>
+</body></html>
