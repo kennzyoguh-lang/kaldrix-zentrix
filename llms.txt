@@ -6,6 +6,7 @@ Status: a working test service with a pretend bank (no real money). Not independ
 
 ## For investors and design partners
 - [Investor brief, one page](https://kennzyoguh-lang.github.io/kaldrix-zentrix/investors.html)
+- [A recorded run of 51 real situations: database access and Zentrix](https://kennzyoguh-lang.github.io/kaldrix-zentrix/evidence.html)
 - [Design partner programme and letter of intent pack](https://kennzyoguh-lang.github.io/kaldrix-zentrix/partners.html)
 
 ## Guides

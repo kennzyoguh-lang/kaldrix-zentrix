@@ -1,0 +1,416 @@
+{
+ "run_at": "23 October 2026 (UTC)",
+ "service": "https://kaldrix-sandbox.onrender.com",
+ "rows": [
+  {
+   "group": "Database access",
+   "tried": "Reads the open tickets",
+   "expected": "allowed",
+   "got": "allowed",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads allowed columns of customers",
+   "expected": "allowed",
+   "got": "allowed",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Changes only ticket 7 (the one row it was given)",
+   "expected": "allowed",
+   "got": "allowed",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads the payroll table",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads financial records",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads a column it was not given",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads every column of customers",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Joins tickets to payroll",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Hides payroll in a subquery",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Changes every ticket",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Changes ticket 6 (not given)",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Deletes tickets",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Drops a table",
+   "expected": "action_not_permitted",
+   "got": "action_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Gives itself rights",
+   "expected": "action_not_permitted",
+   "got": "action_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Sends something that is not SQL",
+   "expected": "malformed",
+   "got": "malformed",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads rows back through a change, with a permission that only changes",
+   "expected": "resource_not_permitted",
+   "got": "resource_not_permitted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "States a different purpose (marketing)",
+   "expected": "purpose_mismatch",
+   "got": "purpose_mismatch",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "States no purpose",
+   "expected": "purpose_mismatch",
+   "got": "purpose_mismatch",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Uses a proof made for one statement on another",
+   "expected": "possession_proof_invalid",
+   "got": "possession_proof_invalid",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Replays a proof that was already used",
+   "expected": "replay_detected",
+   "got": "replay_detected",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Someone who copied the permission but not the key",
+   "expected": "possession_proof_invalid",
+   "got": "possession_proof_invalid",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Keeps asking for payroll until it has been refused a dozen times, then asks for something it may read",
+   "expected": "revoked",
+   "got": "revoked",
+   "match": true,
+   "note": "The permission froze itself."
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads inside a 6 second permission",
+   "expected": "allowed",
+   "got": "allowed",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads again after the 6 seconds ended",
+   "expected": "expired",
+   "got": "expired",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads before a permission that starts later has started",
+   "expected": "not_yet_valid",
+   "got": "not_yet_valid",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Database access",
+   "tried": "Reads after a person cancelled the permission",
+   "expected": "revoked",
+   "got": "revoked",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Locks $25.00 for one exact task",
+   "expected": "escrow_locked",
+   "got": "escrow_locked",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Asks for the money before doing the work",
+   "expected": "conditions_not_met",
+   "got": "conditions_not_met",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Hands in a different file",
+   "expected": "outputs_do_not_match",
+   "got": "outputs_do_not_match",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "A stranger signs the proof with another key",
+   "expected": "proof_signature_invalid",
+   "got": "proof_signature_invalid",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "The agent signs a proof with the right file",
+   "expected": "proof_accepted",
+   "got": "proof_accepted",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Releases, with its permission and a fresh proof",
+   "expected": "escrow_released",
+   "got": "escrow_released",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Tries to release the same escrow again",
+   "expected": "escrow_not_locked",
+   "got": "escrow_not_locked",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Conditional escrow",
+   "tried": "Releases after the permission was cancelled",
+   "expected": "revoked",
+   "got": "revoked",
+   "match": true,
+   "note": "The work was done and proven; the money stayed locked."
+  },
+  {
+   "group": "x402 facilitator",
+   "tried": "Pays with no Kaldrix permission attached",
+   "expected": "kaldrix_authorization_required",
+   "got": "kaldrix_authorization_required",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "x402 facilitator",
+   "tried": "Pays an address nobody registered",
+   "expected": "unknown_pay_to",
+   "got": "unknown_pay_to",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "x402 facilitator",
+   "tried": "Pays $90.00 when the permission allows $50.00",
+   "expected": "amount_exceeded",
+   "got": "amount_exceeded",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "x402 facilitator",
+   "tried": "Pays $1.00 to the registered supplier, inside every limit",
+   "expected": "settled",
+   "got": "settled",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "x402 facilitator",
+   "tried": "Sends the same payment again (same nonce)",
+   "expected": "same payment, not a second",
+   "got": "replay",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "AP2 mandate check",
+   "tried": "A payment inside every constraint",
+   "expected": "satisfied",
+   "got": "satisfied",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "AP2 mandate check",
+   "tried": "Too much, to the wrong payee, over the budget",
+   "expected": "3 problems named",
+   "got": "3 problems named",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "AP2 mandate check",
+   "tried": "A constraint nobody has heard of",
+   "expected": "fails, as the specification requires",
+   "got": "fails",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Simulated local rails",
+   "tried": "Quote $200.00 on NIP",
+   "expected": "a quote in NGN, marked simulated",
+   "got": "29850000 minor units of NGN, simulated=True",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Simulated local rails",
+   "tried": "Quote $200.00 on MPESA",
+   "expected": "a quote in KES, marked simulated",
+   "got": "2554200 minor units of KES, simulated=True",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Simulated local rails",
+   "tried": "Quote $200.00 on PIX",
+   "expected": "a quote in BRL, marked simulated",
+   "got": "109670 minor units of BRL, simulated=True",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Simulated local rails",
+   "tried": "Quote an amount too small to cover the fee",
+   "expected": "refused",
+   "got": "HTTP 400",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Card authorization sidecar",
+   "tried": "The agent is approved for $42.00 at one merchant",
+   "expected": "card_intent_approved",
+   "got": "card_intent_approved",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Card authorization sidecar",
+   "tried": "A card authorization for $99.00 arrives",
+   "expected": "not cleared",
+   "got": "not cleared",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Card authorization sidecar",
+   "tried": "A card authorization for another merchant arrives",
+   "expected": "not cleared",
+   "got": "not cleared",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Card authorization sidecar",
+   "tried": "The matching card authorization arrives",
+   "expected": "cleared",
+   "got": "cleared",
+   "match": true,
+   "note": ""
+  },
+  {
+   "group": "Card authorization sidecar",
+   "tried": "The same card authorization arrives a second time",
+   "expected": "not cleared",
+   "got": "not cleared",
+   "match": true,
+   "note": ""
+  }
+ ],
+ "matched": 51,
+ "total": 51
+}
