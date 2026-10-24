@@ -1,0 +1,168 @@
+{
+  "what": "A run of the project's checks on one computer. Not an independent build.",
+  "started_at": "2026-10-24T09:59:59+00:00",
+  "finished_at": "2026-10-24T10:15:43+00:00",
+  "seconds": 944,
+  "commit": "47ae9becad4b286bf36f08775f3e86b93278bde5",
+  "commit_short": "47ae9be",
+  "branch": "kaldrix-zentrix",
+  "commit_subject": "Keep a second unit test clear of the guard against text matching on SQL",
+  "uncommitted_changes": false,
+  "machine": "Windows 11",
+  "steps": [
+    {
+      "name": "Clippy, warnings are errors",
+      "command": "cargo clippy --workspace --all-targets --offline -- -D warnings",
+      "status": "passed",
+      "seconds": 11.3,
+      "tests": null
+    },
+    {
+      "name": "Workspace test suite",
+      "command": "cargo test --workspace --no-fail-fast --offline",
+      "status": "passed",
+      "seconds": 519.1,
+      "tests": {
+        "passed": 1215,
+        "failed": 0,
+        "ignored": 36
+      }
+    },
+    {
+      "name": "Security regression suite",
+      "command": "cargo test --manifest-path SECURITY/TESTS/regressions/Cargo.toml --offline",
+      "status": "passed",
+      "seconds": 1.2,
+      "tests": {
+        "passed": 18,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "SQL dialect divergence harness",
+      "command": "cargo test --manifest-path SECURITY/TESTS/sql-divergence/Cargo.toml --offline",
+      "status": "passed",
+      "seconds": 10.3,
+      "tests": {
+        "passed": 6,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "Exhaustive interleaving check (loom)",
+      "command": "cargo test --release --manifest-path SECURITY/TESTS/loom-proof/Cargo.toml --offline",
+      "status": "passed",
+      "seconds": 308.7,
+      "tests": {
+        "passed": 7,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "Web app: typecheck",
+      "command": "npm.cmd run typecheck",
+      "status": "passed",
+      "seconds": 7.6,
+      "tests": null
+    },
+    {
+      "name": "Web app: unit tests",
+      "command": "npm.cmd test",
+      "status": "passed",
+      "seconds": 49.9,
+      "tests": {
+        "passed": 41,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "Web app: production build",
+      "command": "npm.cmd run build",
+      "status": "passed",
+      "seconds": 5.4,
+      "tests": null
+    },
+    {
+      "name": "TypeScript SDK: build",
+      "command": "npm.cmd run build",
+      "status": "passed",
+      "seconds": 2.2,
+      "tests": null
+    },
+    {
+      "name": "TypeScript SDK: tests",
+      "command": "npm.cmd test",
+      "status": "passed",
+      "seconds": 2.4,
+      "tests": {
+        "passed": 18,
+        "failed": 0,
+        "ignored": 1
+      }
+    },
+    {
+      "name": "Python SDK: tests",
+      "command": "C:\\Users\\oguhk\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m pytest -q",
+      "status": "passed",
+      "seconds": 5.5,
+      "tests": null
+    },
+    {
+      "name": "Shipped JavaScript dependencies: advisories (web app)",
+      "command": "npm.cmd audit --omit=dev --audit-level=high",
+      "status": "passed",
+      "seconds": 18.7,
+      "tests": null
+    },
+    {
+      "name": "Shipped JavaScript dependencies: advisories (SDK)",
+      "command": "npm.cmd audit --omit=dev --audit-level=high",
+      "status": "passed",
+      "seconds": 2.1,
+      "tests": null
+    },
+    {
+      "name": "PostgreSQL store and the data gateway on a real PostgreSQL 17",
+      "command": null,
+      "status": "not run here",
+      "seconds": 0,
+      "tests": null,
+      "note": "needs a PostgreSQL server. Run on GitHub's CI, or locally with ZENTRIX_TEST_POSTGRES_URL set (the data gateway part was also run against an in-process PostgreSQL engine on 2026-10-23)"
+    },
+    {
+      "name": "Browser journey in installed Chrome",
+      "command": null,
+      "status": "not run here",
+      "seconds": 0,
+      "tests": null,
+      "note": "needs the browser journey harness; run with `npm run e2e` in apps/web"
+    },
+    {
+      "name": "Recovery drill, two process load test, TLS to the database, container",
+      "command": null,
+      "status": "not run here",
+      "seconds": 0,
+      "tests": null,
+      "note": "needs Docker"
+    },
+    {
+      "name": "Rust dependency advisories and licences (cargo-audit, cargo-deny)",
+      "command": null,
+      "status": "not run here",
+      "seconds": 0,
+      "tests": null,
+      "note": "not installed on this computer"
+    }
+  ],
+  "summary": {
+    "passed": 13,
+    "failed": 0,
+    "not_run_here": 4,
+    "tests_passed": 1305,
+    "tests_failed": 0
+  }
+}

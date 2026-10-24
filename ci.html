@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaldrix and Zentrix: the latest test run</title>
+<meta name="description" content="What the project&#x27;s own checks said about the latest commit: every step, what passed, and what could not run. Built from the test script&#x27;s report.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#17124A">
+<meta property="og:title" content="Kaldrix and Zentrix: the latest test run">
+<meta property="og:description" content="What the project&#x27;s own checks said about the latest commit: every step, what passed, and what could not run. Built from the test script&#x27;s report.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/ci.html">
+<meta property="og:site_name" content="Kaldrix and Zentrix">
+<meta property="og:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kennzyoguh-lang.github.io/kaldrix-zentrix/images/07-zentrix-three-parts.png">
+<link rel="canonical" href="https://kennzyoguh-lang.github.io/kaldrix-zentrix/ci.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="" aria-label="Kaldrix and Zentrix, home"><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#2c2570"/><g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"><path d="M40 30V90"/><path d="M45 62L79 31"/><path d="M52 65L82 91"/></g><circle cx="86" cy="27" r="9" fill="#E0A526"/></svg>Kaldrix · Zentrix</a><nav class="links" aria-label="Main"><a href="investors.html">Investors</a><a href="partners.html">Design partners</a><a class=opt href="learn/">Learn</a><a class=opt href="challenge.html">Break it</a><a href="https://kaldrix-sandbox.onrender.com" target="_blank" rel="noopener">Live demo</a></nav></div></header>
+<div class="hero"><div class="wrap">
+<span class="tag">Tests · latest run · 2026-10-24</span>
+<h1>Every check we could run passed.</h1>
+<p class="lead">This page is built from the report the test script wrote, not typed by hand. It lists what ran, what passed, and what could not run on this computer.</p>
+<p class="fine">Commit <code style="background:rgba(255,255,255,.15);color:#fff">47ae9be</code> on branch kaldrix-zentrix: Keep a second unit test clear of the guard against text matching on SQL</p>
+</div></div>
+<main id="main">
+
+<section><div class="wrap">
+<div class="grid g4">
+<div class="card"><h3>13</h3><p>steps passed</p></div>
+<div class="card"><h3>0</h3><p>steps failed</p></div>
+<div class="card"><h3>1,305</h3><p>individual tests passed (0 failed)</p></div>
+<div class="card"><h3>4</h3><p>steps not run on this computer</p></div>
+</div>
+
+<div class="callout"><strong>How to read this honestly.</strong> This is a run on the founder's own computer (Windows 11), not on a clean machine and not by anyone independent. It shows that the
+project's own checks pass on the commit named above. It does not replace a build by someone else. GitHub's automatic build, which would run the same checks on a clean machine, has not been able to start
+since run 37: GitHub reported that the jobs were not started because of a payment or spending limit on the account. The last automatic run that finished (run 36) passed. That is an account setting, not a
+test failure. Until it is changed, this report is the record.</div>
+<h2>Every step</h2>
+<div class="tablewrap"><table>
+<tr><th>Step</th><th>Result</th><th>Tests</th><th>Time</th></tr>
+<tr><td>Clippy, warnings are errors</td><td><span class="pill ok">Passed</span></td><td></td><td>11 s</td></tr><tr><td>Workspace test suite</td><td><span class="pill ok">Passed</span></td><td>1,215 passed, 36 not run</td><td>8 min 39 s</td></tr><tr><td>Security regression suite</td><td><span class="pill ok">Passed</span></td><td>18 passed</td><td>1 s</td></tr><tr><td>SQL dialect divergence harness</td><td><span class="pill ok">Passed</span></td><td>6 passed</td><td>10 s</td></tr><tr><td>Exhaustive interleaving check (loom)</td><td><span class="pill ok">Passed</span></td><td>7 passed</td><td>5 min 8 s</td></tr><tr><td>Web app: typecheck</td><td><span class="pill ok">Passed</span></td><td></td><td>7 s</td></tr><tr><td>Web app: unit tests</td><td><span class="pill ok">Passed</span></td><td>41 passed</td><td>49 s</td></tr><tr><td>Web app: production build</td><td><span class="pill ok">Passed</span></td><td></td><td>5 s</td></tr><tr><td>TypeScript SDK: build</td><td><span class="pill ok">Passed</span></td><td></td><td>2 s</td></tr><tr><td>TypeScript SDK: tests</td><td><span class="pill ok">Passed</span></td><td>18 passed, 1 not run</td><td>2 s</td></tr><tr><td>Python SDK: tests</td><td><span class="pill ok">Passed</span></td><td></td><td>5 s</td></tr><tr><td>Shipped JavaScript dependencies: advisories (web app)</td><td><span class="pill ok">Passed</span></td><td></td><td>18 s</td></tr><tr><td>Shipped JavaScript dependencies: advisories (SDK)</td><td><span class="pill ok">Passed</span></td><td></td><td>2 s</td></tr><tr><td>PostgreSQL store and the data gateway on a real PostgreSQL 17<br><span style="color:var(--muted);font-size:15px">needs a PostgreSQL server. Run on GitHub&#x27;s CI, or locally with ZENTRIX_TEST_POSTGRES_URL set (the data gateway part was also run against an in-process PostgreSQL engine on 2026-10-23)</span></td><td><span class="pill no">Not run here</span></td><td></td><td></td></tr><tr><td>Browser journey in installed Chrome<br><span style="color:var(--muted);font-size:15px">needs the browser journey harness; run with `npm run e2e` in apps/web</span></td><td><span class="pill no">Not run here</span></td><td></td><td></td></tr><tr><td>Recovery drill, two process load test, TLS to the database, container<br><span style="color:var(--muted);font-size:15px">needs Docker</span></td><td><span class="pill no">Not run here</span></td><td></td><td></td></tr><tr><td>Rust dependency advisories and licences (cargo-audit, cargo-deny)<br><span style="color:var(--muted);font-size:15px">not installed on this computer</span></td><td><span class="pill no">Not run here</span></td><td></td><td></td></tr>
+</table></div>
+<p class="sub" style="margin-top:18px">The run took 15 min 44 s. Started 2026-10-24T09:59:59+00:00, finished 2026-10-24T10:15:43+00:00.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<p class="kicker">What these checks are, and are not</p><h2>Plain answers.</h2>
+<div class="grid g2">
+<div class="card"><h3>What they cover</h3><ul class="clean"><li>The Rust workspace: the permission engine, the payment engine, the data gateway, the platform server and the SQL reader, including the written attacks.</li><li>The web dashboard and the two SDKs (TypeScript and Python), including checks that both sign requests byte for byte the same way.</li><li>A clean compiler and a strict linter. Warnings count as failures.</li></ul></div>
+<div class="card"><h3>What they do not prove</h3><ul class="clean"><li>That anyone wants the product. These are tests, not customers.</li><li>That the system is secure against someone we did not think of. No independent security review has happened.</li><li>That it works against a production database or a live payment provider. It has not been run against either.</li></ul></div>
+</div>
+<p class="sub" style="margin-top:18px">The script is <code>scripts/ci-local.py</code> in the source. The raw report is <a href="files/ci-report.json">files/ci-report.json</a>. Source access is available under NDA to a reviewer, who can run the same script.</p>
+<div class="cta"><a class="btn dark" href="evidence.html">The recorded run of 51 situations</a><a class="btn dark" href="investors.html">Investor brief</a></div>
+</div></section>
+
+</main>
+<footer><div class="wrap"><div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div><div><a href="pitch.html">The short version</a> · <a href="investors.html">Investors</a> · <a href="partners.html">Design partners</a> · <a href="learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a></div></div><p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p></div></footer><script src="a.js" data-site="kaldrix-zentrix" defer></script>
+</body></html>
