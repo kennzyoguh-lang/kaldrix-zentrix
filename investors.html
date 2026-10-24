@@ -77,14 +77,14 @@
 <tr><td>Payment checks, human approval for large payments, never paying twice</td><td><span class="pill ok">Built</span></td><td>Tested in the simulation and through a provider's test mode.</td></tr>
 <tr><td>Signed proof envelope with every payment</td><td><span class="pill ok">Built</span></td><td>Who held the permission, the exact amount, supplier and purpose, time limits.</td></tr>
 <tr><td>MCP connector, x402 guard, AP2 constraint checker</td><td><span class="pill ok">Built</span></td><td>Public code. First versions, tested, not independently reviewed.</td></tr>
-<tr><td>Purpose-bound, time-bound database access for agents (tables, operations, columns, rows)</td><td><span class="pill ok">Built</span></td><td>Checked on every statement; ends when its time ends. Serves one pretend database; no real database is connected.</td></tr>
+<tr><td>Purpose-bound, time-bound database access for agents (tables, operations, columns, rows)</td><td><span class="pill ok">Built</span></td><td>Checked on every statement; ends when its time ends. The hosted service serves one pretend database.</td></tr>
 <tr><td>Conditional escrow, x402 facilitator, AP2 constraint check, card-authorization sidecar</td><td><span class="pill ok">Built (simulated)</span></td><td>A pretend bank, no blockchain, no card network. Every response says so.</td></tr>
 <tr><td>Registry listings (MCP) and protocol community posts</td><td><span class="pill wait">In progress</span></td><td>Needs accounts only the founder can create.</td></tr>
 <tr><td>Independent human security review</td><td><span class="pill wait">Needed</span></td><td>Scope is written. Required before real money or real customers.</td></tr>
 <tr><td>Live payment provider</td><td><span class="pill wait">Next</span></td><td>Needs a design partner or provider agreement.</td></tr>
 <tr><td>Customers, revenue, partnerships</td><td><span class="pill no">None yet</span></td><td>No partnership with any company is claimed.</td></tr>
 <tr><td>A real escrow vault, and live NIP, M-Pesa and PIX settlement</td><td><span class="pill no">Not built</span></td><td>The simulated versions exist (fixed illustrative rates, receipts marked SIM). A real vault and real rails need licensed providers.</td></tr>
-<tr><td>A connector to a real database</td><td><span class="pill no">Not built</span></td><td>The gateway judges a statement before it runs; a real connector must be the only door to the database and needs its own review.</td></tr>
+<tr><td>A read only connector to a real PostgreSQL database</td><td><span class="pill ok">Built</span></td><td>Off on the hosted service, read only, and not yet reviewed by anyone outside the team. It only protects data an agent reaches through it, so it must be the only door to the database. Writes through a real database are not built.</td></tr>
 </table></div>
 </div></section>
 
@@ -193,5 +193,5 @@
 
 
 </main>
-<footer><div class="wrap"><div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div><div><a href="investors.html">Investors</a> · <a href="partners.html">Design partners</a> · <a href="learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a></div></div><p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p></div></footer><script src="a.js" data-site="kaldrix-zentrix" defer></script>
+<footer><div class="wrap"><div class="row"><div>© 2026 Kaldrix. All rights reserved. Kaldrix and Zentrix are product names. Founder: Oguh Chidiebube Kenneth.</div><div><a href="pitch.html">The short version</a> · <a href="investors.html">Investors</a> · <a href="partners.html">Design partners</a> · <a href="learn/">Learn</a> · <a href="https://github.com/kennzyoguh-lang/kaldrix-connect/security" target="_blank" rel="noopener">Report a security problem</a></div></div><p style="margin:14px 0 0;font-size:14px">A test service and a first version. It uses a pretend bank, has had no independent security review, and is not a bank or a licensed payment provider. Third-party names (Coinbase, Google, Paystack, Flutterwave and others) belong to their owners and no partnership with them is implied.</p></div></footer><script src="a.js" data-site="kaldrix-zentrix" defer></script>
 </body></html>
