@@ -28,6 +28,7 @@ Status: a working test service with a pretend bank (no real money). Not independ
 - [Break the Agent challenge](https://kennzyoguh-lang.github.io/kaldrix-zentrix/challenge.html)
 - [Public connector for AI assistants (MCP)](https://github.com/kennzyoguh-lang/kaldrix-connect)
 - [x402 guard and AP2 constraint checker](https://github.com/kennzyoguh-lang/kaldrix-x402-guard)
+- [Python client on PyPI: pip install kaldrix-sdk](https://pypi.org/project/kaldrix-sdk/)
 - [Founder: Oguh Chidiebube Kenneth](https://kennzyoguh-lang.github.io/)
 - [Kaldrix on LinkedIn](https://www.linkedin.com/company/kaldrix/)
 - [Zentrix on LinkedIn](https://www.linkedin.com/company/zentrix-gateway/)

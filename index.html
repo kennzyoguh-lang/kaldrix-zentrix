@@ -273,6 +273,7 @@
       <tr><td>Paystack, in its real test mode</td><td><span class="pill ok">Working</span></td></tr>
       <tr><td>Private test accounts for developers, with a dashboard and a one-click demo</td><td><span class="pill ok">Working</span></td></tr>
       <tr><td>A connector for AI assistants (Claude, Cursor, Copilot, Codex)</td><td><span class="pill ok">Working</span></td></tr>
+      <tr><td>A Python client on PyPI (<code>pip install kaldrix-sdk</code>)</td><td><span class="pill ok">Working</span></td></tr>
       <tr><td>Flutterwave as a second provider</td><td><span class="pill wait">Built, live test pending</span></td></tr>
       <tr><td>Purpose-bound, time-bound database access for agents (tables, operations, columns, rows; ends when the time ends)</td><td><span class="pill ok">Working in the test service</span> one pretend database; no real database is connected</td></tr>
       <tr><td>Conditional escrow, an x402 facilitator, an AP2 constraint check, a card-authorization sidecar</td><td><span class="pill ok">Working in the test service</span> simulations: a pretend bank, no blockchain, no card network</td></tr>
@@ -295,6 +296,10 @@
   <h3 style="margin-top:34px">Connect your own AI assistant</h3>
   <p class="sub" style="margin-bottom:6px">After you make a key for your assistant in the demo, one line installs the connector. This one is for Claude Code; the code page covers the others.</p>
   <pre class="code">claude mcp add kaldrix -e KALDRIX_AGENT_KEY=kz_YOUR_AGENT_KEY -- uvx --from git+https://github.com/kennzyoguh-lang/kaldrix-connect kaldrix-connect</pre>
+  <h3 style="margin-top:28px">Or build with the Python client</h3>
+  <p class="sub" style="margin-bottom:6px">For your own code: a small client for the test service, with helpers for an agent to sign its own proofs. It has had no independent security review.</p>
+  <pre class="code">pip install kaldrix-sdk</pre>
+  <p class="fine" style="color:var(--muted)"><a href="https://pypi.org/project/kaldrix-sdk/" target="_blank" rel="noopener">kaldrix-sdk on PyPI</a>, version 0.1.0.</p>
 </div></section>
 
 <section class="alt" id="faq"><div class="wrap">
